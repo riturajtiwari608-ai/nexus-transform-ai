@@ -15,6 +15,7 @@ export interface GraphNode {
   source_citation?: string;
   position?: { x: number; y: number };
   properties?: Record<string, any>;
+  [key: string]: any;
 }
 
 export interface GraphEdge {

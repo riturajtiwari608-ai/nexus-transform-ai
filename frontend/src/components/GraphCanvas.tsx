@@ -25,7 +25,7 @@ const GraphCanvasInner: React.FC<GraphCanvasProps> = ({ graphData, onNodeClick }
   const { fitView } = useReactFlow();
 
   // Convert GraphNode -> React Flow Node
-  const nodes: Node[] = useMemo(() => {
+  const nodes: any[] = useMemo(() => {
     if (!graphData) return [];
     return graphData.nodes.map((n) => ({
       id: n.id,
@@ -36,7 +36,7 @@ const GraphCanvasInner: React.FC<GraphCanvasProps> = ({ graphData, onNodeClick }
   }, [graphData]);
 
   // Convert GraphEdge -> React Flow Edge
-  const edges: Edge[] = useMemo(() => {
+  const edges: any[] = useMemo(() => {
     if (!graphData) return [];
     return graphData.edges.map((e) => {
       let strokeColor = '#475569';

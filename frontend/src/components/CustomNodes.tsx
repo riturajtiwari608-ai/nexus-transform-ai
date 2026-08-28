@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Handle, Position, NodeProps } from '@xyflow/react';
+import { Handle, Position } from '@xyflow/react';
 import { 
   Building2, 
   User, 
@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { GraphNode } from '../types/graph';
 
-export const ProcessNode = memo(({ data }: NodeProps<GraphNode>) => {
+export const ProcessNode = memo(({ data }: { data: GraphNode }) => {
   const isAutomated = data.status === 'automated';
   const isAugmented = data.status === 'augmented';
 
@@ -79,7 +79,7 @@ export const ProcessNode = memo(({ data }: NodeProps<GraphNode>) => {
   );
 });
 
-export const RoleNode = memo(({ data }: NodeProps<GraphNode>) => {
+export const RoleNode = memo(({ data }: { data: GraphNode }) => {
   const isAtRisk = data.status === 'at_risk';
   const isNew = data.status === 'new_opportunity';
   const isAugmented = data.status === 'augmented';
@@ -142,7 +142,7 @@ export const RoleNode = memo(({ data }: NodeProps<GraphNode>) => {
   );
 });
 
-export const SkillNode = memo(({ data }: NodeProps<GraphNode>) => {
+export const SkillNode = memo(({ data }: { data: GraphNode }) => {
   return (
     <div className="w-64 rounded-xl glass-panel p-3.5 shadow-xl transition-all duration-300 border-l-4 border-l-amber-400 border-slate-700/60 hover:scale-[1.02] cursor-pointer group">
       <Handle type="target" position={Position.Left} className="w-3 h-3 bg-amber-400 border-2 border-slate-900" />
@@ -173,7 +173,7 @@ export const SkillNode = memo(({ data }: NodeProps<GraphNode>) => {
   );
 });
 
-export const AIAgentNode = memo(({ data }: NodeProps<GraphNode>) => {
+export const AIAgentNode = memo(({ data }: { data: GraphNode }) => {
   return (
     <div className="w-72 rounded-xl glass-panel p-4 shadow-2xl transition-all duration-300 border-l-4 border-l-purple-500 border-purple-500/40 shadow-purple-950/60 hover:scale-[1.02] cursor-pointer group relative overflow-hidden">
       <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl pointer-events-none" />
@@ -212,7 +212,7 @@ export const AIAgentNode = memo(({ data }: NodeProps<GraphNode>) => {
   );
 });
 
-export const nodeTypes = {
+export const nodeTypes: any = {
   process: ProcessNode,
   role: RoleNode,
   skill: SkillNode,
