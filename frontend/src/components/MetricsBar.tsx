@@ -21,9 +21,9 @@ export const MetricsBar: React.FC<MetricsBarProps> = ({ simulation, baselineCost
   const savingsPct = baselineCost > 0 ? Math.round((costSavings / baselineCost) * 100) : 18;
 
   return (
-    <div className="grid grid-cols-5 gap-1.5 px-3 py-1 bg-[#090d16]/95 border-b border-slate-800/80 backdrop-blur-md w-full overflow-hidden">
+    <div className="grid grid-cols-5 gap-1 px-2 py-0.5 bg-[#090d16]/95 border-b border-slate-800/80 backdrop-blur-md w-full overflow-hidden">
       {/* 1. Net Projected Cost Savings */}
-      <div className="glass-panel px-2.5 py-1 rounded-lg border border-slate-700/60 flex items-center justify-between min-w-0">
+      <div className="glass-panel min-h-11 px-2 py-0.5 rounded-md border border-slate-700/60 flex items-center justify-between min-w-0">
         <div className="truncate">
           <div className="flex items-center gap-1 text-slate-400 text-[9px] font-medium truncate">
             <DollarSign className="w-2.5 h-2.5 text-emerald-400 shrink-0" />
@@ -39,7 +39,7 @@ export const MetricsBar: React.FC<MetricsBarProps> = ({ simulation, baselineCost
       </div>
 
       {/* 2. Enterprise Automation Index */}
-      <div className="glass-panel px-2.5 py-1 rounded-lg border border-slate-700/60 flex items-center justify-between min-w-0">
+      <div className="glass-panel min-h-11 px-2 py-0.5 rounded-md border border-slate-700/60 flex items-center justify-between min-w-0">
         <div className="truncate">
           <div className="flex items-center gap-1 text-slate-400 text-[9px] font-medium truncate">
             <Sparkles className="w-2.5 h-2.5 text-purple-400 shrink-0" />
@@ -55,7 +55,7 @@ export const MetricsBar: React.FC<MetricsBarProps> = ({ simulation, baselineCost
       </div>
 
       {/* 3. Augmented vs Displaced Workforce */}
-      <div className="glass-panel px-2.5 py-1 rounded-lg border border-slate-700/60 flex items-center justify-between min-w-0">
+      <div className="glass-panel min-h-11 px-2 py-0.5 rounded-md border border-slate-700/60 flex items-center justify-between min-w-0">
         <div className="truncate">
           <div className="flex items-center gap-1 text-slate-400 text-[9px] font-medium truncate">
             <Users className="w-2.5 h-2.5 text-sky-400 shrink-0" />
@@ -71,7 +71,7 @@ export const MetricsBar: React.FC<MetricsBarProps> = ({ simulation, baselineCost
       </div>
 
       {/* 4. Annual Hours Reclaimed */}
-      <div className="glass-panel px-2.5 py-1 rounded-lg border border-slate-700/60 flex items-center justify-between min-w-0">
+      <div className="glass-panel min-h-11 px-2 py-0.5 rounded-md border border-slate-700/60 flex items-center justify-between min-w-0">
         <div className="truncate">
           <div className="flex items-center gap-1 text-slate-400 text-[9px] font-medium truncate">
             <Clock className="w-2.5 h-2.5 text-indigo-400 shrink-0" />
@@ -87,7 +87,7 @@ export const MetricsBar: React.FC<MetricsBarProps> = ({ simulation, baselineCost
       </div>
 
       {/* 5. Human-in-the-Loop Safety Score */}
-      <div className="glass-panel px-2.5 py-1 rounded-lg border border-slate-700/60 flex items-center justify-between min-w-0">
+      <div className="glass-panel min-h-11 px-2 py-0.5 rounded-md border border-slate-700/60 flex items-center justify-between min-w-0">
         <div className="truncate">
           <div className="flex items-center gap-1 text-slate-400 text-[9px] font-medium truncate">
             <ShieldCheck className="w-2.5 h-2.5 text-amber-400 shrink-0" />

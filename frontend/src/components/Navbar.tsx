@@ -32,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const currentIndustry = industries.find(i => i.id === selectedIndustry) || industries[0];
 
   return (
-    <header className="h-11 border-b border-slate-800/90 bg-[#0c1220]/95 px-3 flex items-center justify-between z-30 sticky top-0 w-full overflow-hidden">
+    <header className="h-10 border-b border-slate-800/90 bg-[#0c1220]/95 px-3 flex items-center justify-start z-30 sticky top-0 w-full overflow-hidden">
       {/* Left & Center: Brand + Industry Dropdown Tightly Connected */}
       <div className="flex items-center gap-2 shrink-0">
         {/* Brand */}
@@ -82,7 +82,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Right: Actions Tightly Aligned */}
-      <div className="flex items-center gap-1.5 shrink-0">
+      <div className="ml-5 flex items-center gap-1.5 shrink-0">
         <button
           onClick={onReset}
           title="Fit & Recenter Graph"
