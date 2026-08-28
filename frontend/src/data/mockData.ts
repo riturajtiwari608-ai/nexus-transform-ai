@@ -47,6 +47,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
   industry_id: "banking_claims",
   industry_name: "Banking & Insurance Claims",
   nodes: [
+    // Processes (Column 1: X=40)
     {
       id: "p_intake",
       label: "Claims Intake & Indexing",
@@ -57,7 +58,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       automation_potential: 0.85,
       complexity: "Low",
       source_citation: "SOP-FIN-01: Claims Intake Standard",
-      position: { x: 100, y: 100 },
+      position: { x: 40, y: 40 },
     },
     {
       id: "p_verify",
@@ -69,7 +70,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       automation_potential: 0.70,
       complexity: "Medium",
       source_citation: "SOP-FIN-04: Coverage Verification Guide",
-      position: { x: 100, y: 280 },
+      position: { x: 40, y: 220 },
     },
     {
       id: "p_fraud",
@@ -81,7 +82,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       automation_potential: 0.65,
       complexity: "High",
       source_citation: "Compliance Mandate SEC-88: Anti-Fraud Rules",
-      position: { x: 100, y: 460 },
+      position: { x: 40, y: 400 },
     },
     {
       id: "p_payout",
@@ -93,8 +94,9 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       automation_potential: 0.40,
       complexity: "High",
       source_citation: "SOP-FIN-12: Payout Authorization Limits",
-      position: { x: 100, y: 640 },
+      position: { x: 40, y: 580 },
     },
+    // Roles (Column 2: X=350)
     {
       id: "r_processor",
       label: "Claims Processor",
@@ -105,7 +107,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       automation_potential: 0.0,
       headcount: 45,
       avg_salary: 52000.0,
-      position: { x: 450, y: 100 },
+      position: { x: 350, y: 40 },
     },
     {
       id: "r_underwriter",
@@ -117,7 +119,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       automation_potential: 0.0,
       headcount: 30,
       avg_salary: 82000.0,
-      position: { x: 450, y: 280 },
+      position: { x: 350, y: 220 },
     },
     {
       id: "r_investigator",
@@ -129,7 +131,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       automation_potential: 0.0,
       headcount: 25,
       avg_salary: 88000.0,
-      position: { x: 450, y: 460 },
+      position: { x: 350, y: 400 },
     },
     {
       id: "r_ai_strategist",
@@ -141,8 +143,9 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       automation_potential: 0.0,
       headcount: 0,
       avg_salary: 115000.0,
-      position: { x: 450, y: 640 },
+      position: { x: 350, y: 580 },
     },
+    // Skills (Column 3: X=660)
     {
       id: "s_doc_indexing",
       label: "Document Indexing & OCR",
@@ -152,7 +155,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       status: "baseline",
       automation_potential: 0.0,
       complexity: "Low",
-      position: { x: 800, y: 80 },
+      position: { x: 660, y: 40 },
     },
     {
       id: "s_policy_eval",
@@ -163,7 +166,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       status: "baseline",
       automation_potential: 0.0,
       complexity: "Medium",
-      position: { x: 800, y: 240 },
+      position: { x: 660, y: 180 },
     },
     {
       id: "s_anomaly_det",
@@ -174,7 +177,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       status: "baseline",
       automation_potential: 0.0,
       complexity: "High",
-      position: { x: 800, y: 400 },
+      position: { x: 660, y: 320 },
     },
     {
       id: "s_prompt_eng",
@@ -185,7 +188,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       status: "baseline",
       automation_potential: 0.0,
       complexity: "Medium",
-      position: { x: 800, y: 560 },
+      position: { x: 660, y: 460 },
     },
     {
       id: "s_model_gov",
@@ -196,8 +199,9 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       status: "baseline",
       automation_potential: 0.0,
       complexity: "High",
-      position: { x: 800, y: 720 },
+      position: { x: 660, y: 600 },
     },
+    // AI Agents (Column 4: X=950)
     {
       id: "ai_doc_agent",
       label: "DocAI Ingestion Agent",
@@ -206,7 +210,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       description: "Autonomous multi-modal parser extracting structured JSON from invoices & photos.",
       status: "automated",
       automation_potential: 0.90,
-      position: { x: 1150, y: 150 },
+      position: { x: 950, y: 100 },
     },
     {
       id: "ai_fraud_agent",
@@ -216,7 +220,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       description: "Real-time graph anomaly neural network cross-referencing industry fraud registries.",
       status: "augmented",
       automation_potential: 0.75,
-      position: { x: 1150, y: 420 },
+      position: { x: 950, y: 340 },
     },
     {
       id: "ai_adjudicate_agent",
@@ -226,7 +230,7 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       description: "Generates compliant settlement drafts and auto-approves low-risk claims under $2,000.",
       status: "augmented",
       automation_potential: 0.60,
-      position: { x: 1150, y: 640 },
+      position: { x: 950, y: 560 },
     },
   ],
   edges: [
@@ -358,7 +362,7 @@ export function mockIngest(documentName: string, documentType: string, content: 
         description: `Extracted from ${documentName}`,
         status: "baseline",
         automation_potential: 0.75,
-        position: { x: 120, y: 150 }
+        position: { x: 40, y: 150 }
       },
       {
         id: "role_ingested_1",
@@ -370,7 +374,7 @@ export function mockIngest(documentName: string, documentType: string, content: 
         automation_potential: 0.0,
         headcount: 15,
         avg_salary: 62000,
-        position: { x: 480, y: 150 }
+        position: { x: 350, y: 150 }
       },
       {
         id: "skill_ingested_1",
@@ -380,7 +384,7 @@ export function mockIngest(documentName: string, documentType: string, content: 
         description: "Required operational skill",
         status: "baseline",
         automation_potential: 0.0,
-        position: { x: 840, y: 150 }
+        position: { x: 660, y: 150 }
       },
       {
         id: "ai_ingested_1",
@@ -390,7 +394,7 @@ export function mockIngest(documentName: string, documentType: string, content: 
         description: "Tailored AI intervention agent",
         status: "automated",
         automation_potential: 0.85,
-        position: { x: 1180, y: 150 }
+        position: { x: 950, y: 150 }
       }
     ],
     extracted_edges: [

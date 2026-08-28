@@ -7,7 +7,7 @@ import {
   ChevronDown, 
   Layers, 
   Sparkles,
-  RefreshCw
+  Maximize2
 } from 'lucide-react';
 import { IndustryMeta } from '../types/graph';
 
@@ -93,10 +93,11 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="flex items-center gap-2.5">
         <button
           onClick={onReset}
-          title="Reset Graph Layout"
-          className="p-2 rounded-xl text-slate-400 hover:text-slate-200 hover:bg-slate-800 border border-transparent hover:border-slate-700 transition-all"
+          title="Center and Fit Graph on Screen"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-300 hover:text-slate-100 bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 transition-all"
         >
-          <RefreshCw className="w-4 h-4" />
+          <Maximize2 className="w-3.5 h-3.5 text-indigo-400" />
+          <span>Fit Screen</span>
         </button>
 
         <button

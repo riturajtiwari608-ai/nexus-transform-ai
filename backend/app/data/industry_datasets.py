@@ -47,7 +47,7 @@ INDUSTRY_METADATA = [
 
 def get_banking_claims_dataset() -> GraphData:
     nodes = [
-        # Processes (X: 100-300, Y: 100-700)
+        # Processes (Column 1: X=40)
         GraphNode(
             id="p_intake",
             label="Claims Intake & Indexing",
@@ -57,7 +57,7 @@ def get_banking_claims_dataset() -> GraphData:
             automation_potential=0.85,
             complexity="Low",
             source_citation="SOP-FIN-01: Claims Intake Standard",
-            position={"x": 120, "y": 100},
+            position={"x": 40, "y": 40},
         ),
         GraphNode(
             id="p_verify",
@@ -68,7 +68,7 @@ def get_banking_claims_dataset() -> GraphData:
             automation_potential=0.70,
             complexity="Medium",
             source_citation="SOP-FIN-04: Coverage Verification Guide",
-            position={"x": 120, "y": 280},
+            position={"x": 40, "y": 220},
         ),
         GraphNode(
             id="p_fraud",
@@ -79,7 +79,7 @@ def get_banking_claims_dataset() -> GraphData:
             automation_potential=0.65,
             complexity="High",
             source_citation="Compliance Mandate SEC-88: Anti-Fraud Rules",
-            position={"x": 120, "y": 460},
+            position={"x": 40, "y": 400},
         ),
         GraphNode(
             id="p_payout",
@@ -90,9 +90,9 @@ def get_banking_claims_dataset() -> GraphData:
             automation_potential=0.40,
             complexity="High",
             source_citation="SOP-FIN-12: Payout Authorization Limits",
-            position={"x": 120, "y": 640},
+            position={"x": 40, "y": 580},
         ),
-        # Roles (X: 450-650, Y: 100-700)
+        # Roles (Column 2: X=350)
         GraphNode(
             id="r_processor",
             label="Claims Processor",
@@ -102,7 +102,7 @@ def get_banking_claims_dataset() -> GraphData:
             headcount=45,
             avg_salary=52000.0,
             status=ImpactStatus.AT_RISK,
-            position={"x": 500, "y": 100},
+            position={"x": 350, "y": 40},
         ),
         GraphNode(
             id="r_underwriter",
@@ -113,7 +113,7 @@ def get_banking_claims_dataset() -> GraphData:
             headcount=30,
             avg_salary=82000.0,
             status=ImpactStatus.AUGMENTED,
-            position={"x": 500, "y": 280},
+            position={"x": 350, "y": 220},
         ),
         GraphNode(
             id="r_investigator",
@@ -124,18 +124,7 @@ def get_banking_claims_dataset() -> GraphData:
             headcount=25,
             avg_salary=88000.0,
             status=ImpactStatus.AUGMENTED,
-            position={"x": 500, "y": 460},
-        ),
-        GraphNode(
-            id="r_auditor",
-            label="Compliance Auditor",
-            type=NodeType.ROLE,
-            department="Finance",
-            description="Ensures financial disbursements follow state and federal insurance regulations.",
-            headcount=20,
-            avg_salary=95000.0,
-            status=ImpactStatus.AUGMENTED,
-            position={"x": 500, "y": 640},
+            position={"x": 350, "y": 400},
         ),
         GraphNode(
             id="r_ai_strategist",
@@ -146,9 +135,9 @@ def get_banking_claims_dataset() -> GraphData:
             headcount=0,
             avg_salary=115000.0,
             status=ImpactStatus.NEW_OPPORTUNITY,
-            position={"x": 500, "y": 800},
+            position={"x": 350, "y": 580},
         ),
-        # Skills (X: 850-1050, Y: 80-750)
+        # Skills (Column 3: X=660)
         GraphNode(
             id="s_doc_indexing",
             label="Document Indexing & OCR",
@@ -156,7 +145,7 @@ def get_banking_claims_dataset() -> GraphData:
             department="Operations",
             description="Manual indexing of invoices, medical bills, and police incident reports.",
             complexity="Low",
-            position={"x": 880, "y": 60},
+            position={"x": 660, "y": 40},
         ),
         GraphNode(
             id="s_policy_eval",
@@ -165,7 +154,7 @@ def get_banking_claims_dataset() -> GraphData:
             department="Underwriting",
             description="Interpreting fine-print exclusions, liability limits, and subrogation rights.",
             complexity="Medium",
-            position={"x": 880, "y": 220},
+            position={"x": 660, "y": 180},
         ),
         GraphNode(
             id="s_anomaly_det",
@@ -174,7 +163,7 @@ def get_banking_claims_dataset() -> GraphData:
             department="Risk & Compliance",
             description="Identifying suspicious behavioral metadata and forged documentation signatures.",
             complexity="High",
-            position={"x": 880, "y": 380},
+            position={"x": 660, "y": 320},
         ),
         GraphNode(
             id="s_prompt_eng",
@@ -183,7 +172,7 @@ def get_banking_claims_dataset() -> GraphData:
             department="Transformation",
             description="Writing domain-specific prompts and auditing LLM extraction accuracy.",
             complexity="Medium",
-            position={"x": 880, "y": 540},
+            position={"x": 660, "y": 460},
         ),
         GraphNode(
             id="s_model_gov",
@@ -192,9 +181,9 @@ def get_banking_claims_dataset() -> GraphData:
             department="Transformation",
             description="Human-in-the-loop exception handling and ethical AI bias monitoring.",
             complexity="High",
-            position={"x": 880, "y": 700},
+            position={"x": 660, "y": 600},
         ),
-        # AI Agents (X: 1200-1350, Y: 150-650)
+        # AI Agents (Column 4: X=950)
         GraphNode(
             id="ai_doc_agent",
             label="DocAI Claims Ingestion Agent",
@@ -203,7 +192,7 @@ def get_banking_claims_dataset() -> GraphData:
             description="Autonomous multi-modal parser extracting structured JSON from invoices & photos.",
             automation_potential=0.90,
             status=ImpactStatus.AUTOMATED,
-            position={"x": 1200, "y": 120},
+            position={"x": 950, "y": 100},
         ),
         GraphNode(
             id="ai_fraud_agent",
@@ -213,7 +202,7 @@ def get_banking_claims_dataset() -> GraphData:
             description="Real-time graph anomaly neural network cross-referencing industry fraud registries.",
             automation_potential=0.75,
             status=ImpactStatus.AUGMENTED,
-            position={"x": 1200, "y": 360},
+            position={"x": 950, "y": 340},
         ),
         GraphNode(
             id="ai_adjudicate_agent",
@@ -223,35 +212,23 @@ def get_banking_claims_dataset() -> GraphData:
             description="Generates compliant settlement drafts and auto-approves low-risk claims under $2,000.",
             automation_potential=0.60,
             status=ImpactStatus.AUGMENTED,
-            position={"x": 1200, "y": 600},
+            position={"x": 950, "y": 560},
         ),
     ]
 
     edges = [
-        # Role -> Process
         GraphEdge(id="e1", source="r_processor", target="p_intake", relation="EXECUTES", weight=1.0),
         GraphEdge(id="e2", source="r_underwriter", target="p_verify", relation="EXECUTES", weight=1.0),
         GraphEdge(id="e3", source="r_investigator", target="p_fraud", relation="EXECUTES", weight=1.0),
-        GraphEdge(id="e4", source="r_auditor", target="p_payout", relation="EXECUTES", weight=1.0),
-        # Role -> Skill
-        GraphEdge(id="e5", source="r_processor", target="s_doc_indexing", relation="REQUIRES_SKILL", weight=0.9),
-        GraphEdge(id="e6", source="r_underwriter", target="s_policy_eval", relation="REQUIRES_SKILL", weight=0.8),
-        GraphEdge(id="e7", source="r_investigator", target="s_anomaly_det", relation="REQUIRES_SKILL", weight=0.9),
-        GraphEdge(id="e8", source="r_ai_strategist", target="s_prompt_eng", relation="REQUIRES_SKILL", weight=0.85),
-        GraphEdge(id="e9", source="r_ai_strategist", target="s_model_gov", relation="REQUIRES_SKILL", weight=0.95),
-        # AI Agent -> Process
-        GraphEdge(id="e10", source="ai_doc_agent", target="p_intake", relation="AUTOMATES", weight=0.85),
-        GraphEdge(id="e11", source="ai_fraud_agent", target="p_fraud", relation="AUGMENTED_BY", weight=0.70),
-        GraphEdge(id="e12", source="ai_adjudicate_agent", target="p_payout", relation="AUGMENTED_BY", weight=0.55),
-        # Process Dependencies
-        GraphEdge(id="e13", source="p_intake", target="p_verify", relation="DEPENDS_ON", weight=1.0),
-        GraphEdge(id="e14", source="p_verify", target="p_fraud", relation="DEPENDS_ON", weight=1.0),
-        GraphEdge(id="e15", source="p_fraud", target="p_payout", relation="DEPENDS_ON", weight=1.0),
-        # Reskilling / Transition Pathways
-        GraphEdge(id="e16", source="r_processor", target="r_ai_strategist", relation="TRANSITIONS_TO", weight=2.5),
-        GraphEdge(id="e17", source="r_underwriter", target="r_ai_strategist", relation="TRANSITIONS_TO", weight=1.8),
-        GraphEdge(id="e18", source="s_doc_indexing", target="s_prompt_eng", relation="PREREQUISITE_OF", weight=1.2),
-        GraphEdge(id="e19", source="s_policy_eval", target="s_model_gov", relation="PREREQUISITE_OF", weight=1.0),
+        GraphEdge(id="e4", source="r_processor", target="s_doc_indexing", relation="REQUIRES_SKILL", weight=0.9),
+        GraphEdge(id="e5", source="r_underwriter", target="s_policy_eval", relation="REQUIRES_SKILL", weight=0.8),
+        GraphEdge(id="e6", source="r_investigator", target="s_anomaly_det", relation="REQUIRES_SKILL", weight=0.9),
+        GraphEdge(id="e7", source="r_ai_strategist", target="s_prompt_eng", relation="REQUIRES_SKILL", weight=0.85),
+        GraphEdge(id="e8", source="r_ai_strategist", target="s_model_gov", relation="REQUIRES_SKILL", weight=0.95),
+        GraphEdge(id="e9", source="ai_doc_agent", target="p_intake", relation="AUTOMATES", weight=0.85, is_impacted=True),
+        GraphEdge(id="e10", source="ai_fraud_agent", target="p_fraud", relation="AUGMENTED_BY", weight=0.70, is_impacted=True),
+        GraphEdge(id="e11", source="ai_adjudicate_agent", target="p_payout", relation="AUGMENTED_BY", weight=0.60, is_impacted=True),
+        GraphEdge(id="e12", source="r_processor", target="r_ai_strategist", relation="TRANSITIONS_TO", weight=2.5),
     ]
 
     return GraphData(
@@ -266,7 +243,6 @@ def get_banking_claims_dataset() -> GraphData:
 
 def get_healthcare_clinical_dataset() -> GraphData:
     nodes = [
-        # Processes
         GraphNode(
             id="hc_p_intake",
             label="Patient Triage & Intake",
@@ -274,9 +250,7 @@ def get_healthcare_clinical_dataset() -> GraphData:
             department="Clinical",
             description="Patient symptom logging, vitals recording, and immediate triage categorization.",
             automation_potential=0.60,
-            complexity="Medium",
-            source_citation="Hospital Protocol H-102: Emergency Triage",
-            position={"x": 120, "y": 100},
+            position={"x": 40, "y": 60},
         ),
         GraphNode(
             id="hc_p_scribe",
@@ -285,9 +259,7 @@ def get_healthcare_clinical_dataset() -> GraphData:
             department="Clinical",
             description="Transcribing patient-doctor dialogues and formatting SOAP medical progress notes.",
             automation_potential=0.85,
-            complexity="Low",
-            source_citation="Clinical EHR Guideline #44",
-            position={"x": 120, "y": 280},
+            position={"x": 40, "y": 260},
         ),
         GraphNode(
             id="hc_p_trial",
@@ -296,22 +268,8 @@ def get_healthcare_clinical_dataset() -> GraphData:
             department="Research",
             description="Cross-referencing patient genomic markers and history against open clinical trial criteria.",
             automation_potential=0.75,
-            complexity="High",
-            source_citation="FDA Clinical Trial Matching Standard",
-            position={"x": 120, "y": 460},
+            position={"x": 40, "y": 460},
         ),
-        GraphNode(
-            id="hc_p_adverse",
-            label="Pharmacovigilance Adverse Event Reporting",
-            type=NodeType.PROCESS,
-            department="Safety & Regulatory",
-            description="Investigating drug safety signals and submitting mandatory FDA MedWatch reports.",
-            automation_potential=0.65,
-            complexity="High",
-            source_citation="FDA 21 CFR Part 314: Adverse Drug Experiences",
-            position={"x": 120, "y": 640},
-        ),
-        # Roles
         GraphNode(
             id="hc_r_nurse",
             label="Triage Nurse",
@@ -321,7 +279,7 @@ def get_healthcare_clinical_dataset() -> GraphData:
             headcount=40,
             avg_salary=85000.0,
             status=ImpactStatus.AUGMENTED,
-            position={"x": 500, "y": 100},
+            position={"x": 350, "y": 60},
         ),
         GraphNode(
             id="hc_r_scribe",
@@ -332,29 +290,7 @@ def get_healthcare_clinical_dataset() -> GraphData:
             headcount=25,
             avg_salary=42000.0,
             status=ImpactStatus.AT_RISK,
-            position={"x": 500, "y": 280},
-        ),
-        GraphNode(
-            id="hc_r_coordinator",
-            label="Clinical Research Coordinator",
-            type=NodeType.ROLE,
-            department="Research",
-            description="Manages patient recruitment, consent forms, and protocol adherence for trials.",
-            headcount=18,
-            avg_salary=78000.0,
-            status=ImpactStatus.AUGMENTED,
-            position={"x": 500, "y": 460},
-        ),
-        GraphNode(
-            id="hc_r_safety_lead",
-            label="Drug Safety Specialist",
-            type=NodeType.ROLE,
-            department="Safety & Regulatory",
-            description="Conducts root cause analysis on pharmaceutical adverse events.",
-            headcount=12,
-            avg_salary=98000.0,
-            status=ImpactStatus.AUGMENTED,
-            position={"x": 500, "y": 640},
+            position={"x": 350, "y": 260},
         ),
         GraphNode(
             id="hc_r_ai_clinical_auditor",
@@ -365,26 +301,15 @@ def get_healthcare_clinical_dataset() -> GraphData:
             headcount=0,
             avg_salary=110000.0,
             status=ImpactStatus.NEW_OPPORTUNITY,
-            position={"x": 500, "y": 800},
+            position={"x": 350, "y": 500},
         ),
-        # Skills
         GraphNode(
             id="hc_s_ehr_entry",
             label="EHR Data Entry & Scribing",
             type=NodeType.SKILL,
             department="Clinical",
             description="Typing and categorizing patient histories in Epic/Cerner systems.",
-            complexity="Low",
-            position={"x": 880, "y": 120},
-        ),
-        GraphNode(
-            id="hc_s_trial_protocol",
-            label="GCP Trial Protocol Auditing",
-            type=NodeType.SKILL,
-            department="Research",
-            description="Understanding Good Clinical Practice (GCP) trial inclusion/exclusion criteria.",
-            complexity="High",
-            position={"x": 880, "y": 320},
+            position={"x": 660, "y": 120},
         ),
         GraphNode(
             id="hc_s_prompt_clinical",
@@ -392,19 +317,8 @@ def get_healthcare_clinical_dataset() -> GraphData:
             type=NodeType.SKILL,
             department="Transformation",
             description="Auditing ambient AI transcriptions against medical standards for safety.",
-            complexity="Medium",
-            position={"x": 880, "y": 520},
+            position={"x": 660, "y": 380},
         ),
-        GraphNode(
-            id="hc_s_bio_analytics",
-            label="Biomedical AI Validation",
-            type=NodeType.SKILL,
-            department="Transformation",
-            description="Interpreting genomic and multimodal AI matching confidence scores.",
-            complexity="High",
-            position={"x": 880, "y": 720},
-        ),
-        # AI Agents
         GraphNode(
             id="hc_ai_ambient_scribe",
             label="Ambient Clinical Scribe AI",
@@ -413,32 +327,17 @@ def get_healthcare_clinical_dataset() -> GraphData:
             description="Listens to patient-physician dialogue and auto-generates structured EHR progress notes.",
             automation_potential=0.88,
             status=ImpactStatus.AUTOMATED,
-            position={"x": 1200, "y": 200},
-        ),
-        GraphNode(
-            id="hc_ai_trial_matcher",
-            label="Genomic Trial Matching Agent",
-            type=NodeType.AI_AGENT,
-            department="AI Systems",
-            description="Autonomous agent matching patient biomarker profiles to global clinical trial databases.",
-            automation_potential=0.75,
-            status=ImpactStatus.AUGMENTED,
-            position={"x": 1200, "y": 480},
+            position={"x": 950, "y": 200},
         ),
     ]
 
     edges = [
         GraphEdge(id="hc_e1", source="hc_r_nurse", target="hc_p_intake", relation="EXECUTES", weight=1.0),
         GraphEdge(id="hc_e2", source="hc_r_scribe", target="hc_p_scribe", relation="EXECUTES", weight=1.0),
-        GraphEdge(id="hc_e3", source="hc_r_coordinator", target="hc_p_trial", relation="EXECUTES", weight=1.0),
-        GraphEdge(id="hc_e4", source="hc_r_safety_lead", target="hc_p_adverse", relation="EXECUTES", weight=1.0),
-        GraphEdge(id="hc_e5", source="hc_r_scribe", target="hc_s_ehr_entry", relation="REQUIRES_SKILL", weight=0.9),
-        GraphEdge(id="hc_e6", source="hc_r_coordinator", target="hc_s_trial_protocol", relation="REQUIRES_SKILL", weight=0.85),
-        GraphEdge(id="hc_e7", source="hc_r_ai_clinical_auditor", target="hc_s_prompt_clinical", relation="REQUIRES_SKILL", weight=0.9),
-        GraphEdge(id="hc_e8", source="hc_ai_ambient_scribe", target="hc_p_scribe", relation="AUTOMATES", weight=0.88),
-        GraphEdge(id="hc_e9", source="hc_ai_trial_matcher", target="hc_p_trial", relation="AUGMENTED_BY", weight=0.75),
-        GraphEdge(id="hc_e10", source="hc_r_scribe", target="hc_r_ai_clinical_auditor", relation="TRANSITIONS_TO", weight=2.0),
-        GraphEdge(id="hc_e11", source="hc_s_ehr_entry", target="hc_s_prompt_clinical", relation="PREREQUISITE_OF", weight=1.1),
+        GraphEdge(id="hc_e3", source="hc_r_scribe", target="hc_s_ehr_entry", relation="REQUIRES_SKILL", weight=0.9),
+        GraphEdge(id="hc_e4", source="hc_ai_ambient_scribe", target="hc_p_scribe", relation="AUTOMATES", weight=0.88, is_impacted=True),
+        GraphEdge(id="hc_e5", source="hc_r_scribe", target="hc_r_ai_clinical_auditor", relation="TRANSITIONS_TO", weight=2.0),
+        GraphEdge(id="hc_e6", source="hc_r_ai_clinical_auditor", target="hc_s_prompt_clinical", relation="REQUIRES_SKILL", weight=0.9),
     ]
 
     return GraphData(
@@ -458,27 +357,18 @@ def get_supply_chain_dataset() -> GraphData:
             label="Demand Sensing & Forecasting",
             type=NodeType.PROCESS,
             department="Planning",
-            description="Forecasting seasonal SKU velocity across 500+ distribution centers.",
+            description="Forecasting seasonal SKU velocity across distribution centers.",
             automation_potential=0.80,
-            position={"x": 120, "y": 120},
+            position={"x": 40, "y": 80},
         ),
         GraphNode(
             id="sc_p_route",
             label="Dynamic Fleet Route Dispatch",
             type=NodeType.PROCESS,
             department="Logistics",
-            description="Optimizing last-mile delivery multi-stop routing factoring real-time weather and traffic.",
+            description="Optimizing last-mile delivery multi-stop routing factoring traffic.",
             automation_potential=0.75,
-            position={"x": 120, "y": 320},
-        ),
-        GraphNode(
-            id="sc_p_rma",
-            label="RMA Returns Inspection & Restock",
-            type=NodeType.PROCESS,
-            department="Warehouse",
-            description="Assessing returned merchandise condition and routing to refurbish vs discount sales.",
-            automation_potential=0.60,
-            position={"x": 120, "y": 520},
+            position={"x": 40, "y": 320},
         ),
         GraphNode(
             id="sc_r_planner",
@@ -489,7 +379,7 @@ def get_supply_chain_dataset() -> GraphData:
             headcount=35,
             avg_salary=65000.0,
             status=ImpactStatus.AUGMENTED,
-            position={"x": 500, "y": 120},
+            position={"x": 350, "y": 80},
         ),
         GraphNode(
             id="sc_r_dispatcher",
@@ -500,54 +390,53 @@ def get_supply_chain_dataset() -> GraphData:
             headcount=45,
             avg_salary=50000.0,
             status=ImpactStatus.AT_RISK,
-            position={"x": 500, "y": 320},
+            position={"x": 350, "y": 320},
         ),
         GraphNode(
             id="sc_r_ai_logistics_lead",
-            label="AI Logistics Optimization Architect",
+            label="AI Logistics Optimization Lead",
             type=NodeType.ROLE,
             department="Transformation",
-            description="Configures dynamic autonomous fleet routing models and manages exception alerts.",
+            description="Configures dynamic autonomous fleet routing models.",
             headcount=0,
             avg_salary=105000.0,
             status=ImpactStatus.NEW_OPPORTUNITY,
-            position={"x": 500, "y": 680},
+            position={"x": 350, "y": 540},
         ),
         GraphNode(
             id="sc_s_dispatch",
             label="Manual Route Scheduling",
             type=NodeType.SKILL,
             department="Logistics",
-            description="Assigning stops manually via map sheets and radio calls.",
-            position={"x": 880, "y": 250},
+            description="Assigning stops manually via map sheets.",
+            position={"x": 660, "y": 200},
         ),
         GraphNode(
             id="sc_s_ai_fleet_ops",
-            label="Autonomous Fleet Telemetry & Optimization",
+            label="Autonomous Fleet Optimization",
             type=NodeType.SKILL,
             department="Transformation",
-            description="Supervising algorithmic fleet routing, geofence triggers, and EV battery optimization.",
-            position={"x": 880, "y": 550},
+            description="Supervising algorithmic fleet routing and geofence triggers.",
+            position={"x": 660, "y": 460},
         ),
         GraphNode(
             id="sc_ai_route_agent",
             label="Autonomous Fleet Dispatch Agent",
             type=NodeType.AI_AGENT,
             department="AI Systems",
-            description="Real-time multi-agent routing optimizer reducing fleet fuel by 22%.",
+            description="Real-time multi-agent routing optimizer reducing fleet fuel.",
             automation_potential=0.85,
             status=ImpactStatus.AUTOMATED,
-            position={"x": 1200, "y": 280},
+            position={"x": 950, "y": 260},
         ),
     ]
 
     edges = [
         GraphEdge(id="sc_e1", source="sc_r_dispatcher", target="sc_p_route", relation="EXECUTES", weight=1.0),
         GraphEdge(id="sc_e2", source="sc_r_dispatcher", target="sc_s_dispatch", relation="REQUIRES_SKILL", weight=0.9),
-        GraphEdge(id="sc_e3", source="sc_ai_route_agent", target="sc_p_route", relation="AUTOMATES", weight=0.85),
+        GraphEdge(id="sc_e3", source="sc_ai_route_agent", target="sc_p_route", relation="AUTOMATES", weight=0.85, is_impacted=True),
         GraphEdge(id="sc_e4", source="sc_r_dispatcher", target="sc_r_ai_logistics_lead", relation="TRANSITIONS_TO", weight=2.2),
-        GraphEdge(id="sc_e5", source="sc_s_dispatch", target="sc_s_ai_fleet_ops", relation="PREREQUISITE_OF", weight=1.4),
-        GraphEdge(id="sc_e6", source="sc_r_ai_logistics_lead", target="sc_s_ai_fleet_ops", relation="REQUIRES_SKILL", weight=0.9),
+        GraphEdge(id="sc_e5", source="sc_r_ai_logistics_lead", target="sc_s_ai_fleet_ops", relation="REQUIRES_SKILL", weight=0.9),
     ]
 
     return GraphData(
@@ -569,7 +458,7 @@ def get_software_cloud_dataset() -> GraphData:
             department="Engineering",
             description="Writing application features and reviewing pull requests for architectural standards.",
             automation_potential=0.55,
-            position={"x": 120, "y": 120},
+            position={"x": 40, "y": 80},
         ),
         GraphNode(
             id="dev_p_qa",
@@ -578,16 +467,7 @@ def get_software_cloud_dataset() -> GraphData:
             department="Quality Assurance",
             description="Designing manual and automated test cases, reporting defects, and regression checks.",
             automation_potential=0.75,
-            position={"x": 120, "y": 340},
-        ),
-        GraphNode(
-            id="dev_p_ops",
-            label="CI/CD Deployment & Incident Triage",
-            type=NodeType.PROCESS,
-            department="DevOps & SRE",
-            description="Monitoring live production logs, mitigating alerts, and managing Kubernetes deployments.",
-            automation_potential=0.65,
-            position={"x": 120, "y": 560},
+            position={"x": 40, "y": 320},
         ),
         GraphNode(
             id="dev_r_qa_tester",
@@ -598,29 +478,18 @@ def get_software_cloud_dataset() -> GraphData:
             headcount=20,
             avg_salary=60000.0,
             status=ImpactStatus.AT_RISK,
-            position={"x": 500, "y": 200},
-        ),
-        GraphNode(
-            id="dev_r_swe",
-            label="Software Engineer",
-            type=NodeType.ROLE,
-            department="Engineering",
-            description="Builds backend microservices, REST APIs, and database schemas.",
-            headcount=40,
-            avg_salary=115000.0,
-            status=ImpactStatus.AUGMENTED,
-            position={"x": 500, "y": 400},
+            position={"x": 350, "y": 140},
         ),
         GraphNode(
             id="dev_r_ai_qa_lead",
             label="AI-Augmented QA & Reliability Lead",
             type=NodeType.ROLE,
             department="Transformation",
-            description="Architects autonomous LLM testing agents, synthetic test data generators, and resilience suites.",
+            description="Architects autonomous LLM testing agents and synthetic test data generators.",
             headcount=0,
             avg_salary=130000.0,
             status=ImpactStatus.NEW_OPPORTUNITY,
-            position={"x": 500, "y": 700},
+            position={"x": 350, "y": 480},
         ),
         GraphNode(
             id="dev_s_manual_test",
@@ -628,35 +497,34 @@ def get_software_cloud_dataset() -> GraphData:
             type=NodeType.SKILL,
             department="Quality Assurance",
             description="Writing step-by-step test plans in Excel or TestRail.",
-            position={"x": 880, "y": 180},
+            position={"x": 660, "y": 140},
         ),
         GraphNode(
             id="dev_s_agent_qa",
-            label="Agentic AI Test Engineering (LangGraph & Pytest)",
+            label="Agentic AI Test Engineering",
             type=NodeType.SKILL,
             department="Transformation",
             description="Building multi-agent automated testing suites with LLMs and self-healing test scripts.",
-            position={"x": 880, "y": 480},
+            position={"x": 660, "y": 420},
         ),
         GraphNode(
             id="dev_ai_qa_agent",
-            label="Autonomous QA & Test Synthesis Agent",
+            label="Autonomous QA & Test Agent",
             type=NodeType.AI_AGENT,
             department="AI Systems",
-            description="Parses PR diffs, writes 100% boundary test cases, and executes self-healing regressions.",
+            description="Parses PR diffs, writes boundary test cases, and executes self-healing regressions.",
             automation_potential=0.80,
             status=ImpactStatus.AUTOMATED,
-            position={"x": 1200, "y": 280},
+            position={"x": 950, "y": 240},
         ),
     ]
 
     edges = [
         GraphEdge(id="dev_e1", source="dev_r_qa_tester", target="dev_p_qa", relation="EXECUTES", weight=1.0),
         GraphEdge(id="dev_e2", source="dev_r_qa_tester", target="dev_s_manual_test", relation="REQUIRES_SKILL", weight=0.9),
-        GraphEdge(id="dev_e3", source="dev_ai_qa_agent", target="dev_p_qa", relation="AUTOMATES", weight=0.80),
+        GraphEdge(id="dev_e3", source="dev_ai_qa_agent", target="dev_p_qa", relation="AUTOMATES", weight=0.80, is_impacted=True),
         GraphEdge(id="dev_e4", source="dev_r_qa_tester", target="dev_r_ai_qa_lead", relation="TRANSITIONS_TO", weight=1.7),
-        GraphEdge(id="dev_e5", source="dev_s_manual_test", target="dev_s_agent_qa", relation="PREREQUISITE_OF", weight=1.2),
-        GraphEdge(id="dev_e6", source="dev_r_ai_qa_lead", target="dev_s_agent_qa", relation="REQUIRES_SKILL", weight=0.95),
+        GraphEdge(id="dev_e5", source="dev_r_ai_qa_lead", target="dev_s_agent_qa", relation="REQUIRES_SKILL", weight=0.95),
     ]
 
     return GraphData(
