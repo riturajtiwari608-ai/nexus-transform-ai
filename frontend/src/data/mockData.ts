@@ -6,8 +6,8 @@ export const MOCK_INDUSTRIES: IndustryMeta[] = [
     name: "Banking & Insurance Claims",
     description: "Complex insurance claims processing, fraud detection, underwriting verification, and payout workflows.",
     icon: "ShieldCheck",
-    node_count: 18,
-    edge_count: 24,
+    node_count: 15,
+    edge_count: 12,
     baseline_headcount: 120,
     baseline_cost: 8400000.0,
   },
@@ -16,8 +16,8 @@ export const MOCK_INDUSTRIES: IndustryMeta[] = [
     name: "Healthcare Clinical Operations",
     description: "Patient clinical triage, medical records reconciliation, trial matching, and adverse event reporting.",
     icon: "Activity",
-    node_count: 17,
-    edge_count: 22,
+    node_count: 10,
+    edge_count: 8,
     baseline_headcount: 95,
     baseline_cost: 9120000.0,
   },
@@ -26,8 +26,8 @@ export const MOCK_INDUSTRIES: IndustryMeta[] = [
     name: "Retail & E-Commerce Supply Chain",
     description: "Multi-tier demand forecasting, warehouse replenishment, supplier negotiation, and RMA logistics.",
     icon: "Truck",
-    node_count: 16,
-    edge_count: 20,
+    node_count: 10,
+    edge_count: 7,
     baseline_headcount: 140,
     baseline_cost: 7700000.0,
   },
@@ -36,18 +36,18 @@ export const MOCK_INDUSTRIES: IndustryMeta[] = [
     name: "Enterprise Software & Cloud Ops",
     description: "Software development lifecycle (SDLC), QA testing, incident triage, and DevOps infrastructure.",
     icon: "Cpu",
-    node_count: 17,
-    edge_count: 23,
+    node_count: 10,
+    edge_count: 7,
     baseline_headcount: 80,
     baseline_cost: 9600000.0,
   },
 ];
 
+// 1. Banking & Insurance Claims
 export const MOCK_BANKING_GRAPH: GraphData = {
   industry_id: "banking_claims",
   industry_name: "Banking & Insurance Claims",
   nodes: [
-    // Processes (Column 1: X=40)
     {
       id: "p_intake",
       label: "Claims Intake & Indexing",
@@ -96,7 +96,6 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       source_citation: "SOP-FIN-12: Payout Authorization Limits",
       position: { x: 40, y: 580 },
     },
-    // Roles (Column 2: X=350)
     {
       id: "r_processor",
       label: "Claims Processor",
@@ -145,7 +144,6 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       avg_salary: 115000.0,
       position: { x: 350, y: 580 },
     },
-    // Skills (Column 3: X=660)
     {
       id: "s_doc_indexing",
       label: "Document Indexing & OCR",
@@ -201,7 +199,6 @@ export const MOCK_BANKING_GRAPH: GraphData = {
       complexity: "High",
       position: { x: 660, y: 600 },
     },
-    // AI Agents (Column 4: X=950)
     {
       id: "ai_doc_agent",
       label: "DocAI Ingestion Agent",
@@ -251,32 +248,342 @@ export const MOCK_BANKING_GRAPH: GraphData = {
   baseline_annual_cost: 8400000.0,
 };
 
+// 2. Healthcare Clinical Operations
+export const MOCK_HEALTHCARE_GRAPH: GraphData = {
+  industry_id: "healthcare_clinical",
+  industry_name: "Healthcare Clinical Operations",
+  nodes: [
+    {
+      id: "hc_p_intake",
+      label: "Patient Triage & Intake",
+      type: "process",
+      department: "Clinical",
+      description: "Patient symptom logging, vitals recording, and immediate triage categorization.",
+      status: "baseline",
+      automation_potential: 0.60,
+      position: { x: 40, y: 60 },
+    },
+    {
+      id: "hc_p_scribe",
+      label: "Physician Scribing & Notes",
+      type: "process",
+      department: "Clinical",
+      description: "Transcribing patient-doctor dialogues and formatting SOAP medical progress notes.",
+      status: "baseline",
+      automation_potential: 0.85,
+      position: { x: 40, y: 260 },
+    },
+    {
+      id: "hc_p_trial",
+      label: "Clinical Trial Patient Matching",
+      type: "process",
+      department: "Research",
+      description: "Cross-referencing patient genomic markers and history against open clinical trial criteria.",
+      status: "baseline",
+      automation_potential: 0.75,
+      position: { x: 40, y: 460 },
+    },
+    {
+      id: "hc_r_nurse",
+      label: "Triage Nurse",
+      type: "role",
+      department: "Clinical",
+      description: "Conducts bedside patient evaluation, emergency classification, and preliminary care.",
+      status: "augmented",
+      headcount: 40,
+      avg_salary: 85000.0,
+      position: { x: 350, y: 60 },
+    },
+    {
+      id: "hc_r_scribe",
+      label: "Medical Scribe",
+      type: "role",
+      department: "Clinical",
+      description: "Manual documentation specialist entering patient notes into EHR systems.",
+      status: "at_risk",
+      headcount: 25,
+      avg_salary: 42000.0,
+      position: { x: 350, y: 260 },
+    },
+    {
+      id: "hc_r_ai_clinical_auditor",
+      label: "AI Clinical Validation Lead",
+      type: "role",
+      department: "Transformation",
+      description: "Validates ambient AI notes for hallucination and monitors clinical decision support algorithms.",
+      status: "new_opportunity",
+      headcount: 0,
+      avg_salary: 110000.0,
+      position: { x: 350, y: 500 },
+    },
+    {
+      id: "hc_s_ehr_entry",
+      label: "EHR Data Entry & Scribing",
+      type: "skill",
+      department: "Clinical",
+      description: "Typing and categorizing patient histories in Epic/Cerner systems.",
+      status: "baseline",
+      complexity: "Low",
+      position: { x: 660, y: 120 },
+    },
+    {
+      id: "hc_s_prompt_clinical",
+      label: "Clinical Prompt Auditing & HITL",
+      type: "skill",
+      department: "Transformation",
+      description: "Auditing ambient AI transcriptions against medical standards for safety.",
+      status: "baseline",
+      complexity: "High",
+      position: { x: 660, y: 380 },
+    },
+    {
+      id: "hc_ai_ambient_scribe",
+      label: "Ambient Clinical Scribe AI",
+      type: "ai_agent",
+      department: "AI Systems",
+      description: "Listens to patient-physician dialogue and auto-generates structured EHR progress notes.",
+      status: "automated",
+      automation_potential: 0.88,
+      position: { x: 950, y: 200 },
+    },
+  ],
+  edges: [
+    { id: "hc_e1", source: "hc_r_nurse", target: "hc_p_intake", relation: "EXECUTES", weight: 1.0 },
+    { id: "hc_e2", source: "hc_r_scribe", target: "hc_p_scribe", relation: "EXECUTES", weight: 1.0 },
+    { id: "hc_e3", source: "hc_r_scribe", target: "hc_s_ehr_entry", relation: "REQUIRES_SKILL", weight: 0.9 },
+    { id: "hc_e4", source: "hc_ai_ambient_scribe", target: "hc_p_scribe", relation: "AUTOMATES", weight: 0.88, is_impacted: true },
+    { id: "hc_e5", source: "hc_r_scribe", target: "hc_r_ai_clinical_auditor", relation: "TRANSITIONS_TO", weight: 2.0 },
+    { id: "hc_e6", source: "hc_r_ai_clinical_auditor", target: "hc_s_prompt_clinical", relation: "REQUIRES_SKILL", weight: 0.9 },
+  ],
+  total_headcount: 95,
+  baseline_annual_cost: 9120000.0,
+};
+
+// 3. Retail & E-Commerce Supply Chain
+export const MOCK_SUPPLY_CHAIN_GRAPH: GraphData = {
+  industry_id: "supply_chain",
+  industry_name: "Retail & E-Commerce Supply Chain",
+  nodes: [
+    {
+      id: "sc_p_forecast",
+      label: "Demand Sensing & Forecasting",
+      type: "process",
+      department: "Planning",
+      description: "Forecasting seasonal SKU velocity across distribution centers.",
+      status: "baseline",
+      automation_potential: 0.80,
+      position: { x: 40, y: 80 },
+    },
+    {
+      id: "sc_p_route",
+      label: "Dynamic Fleet Route Dispatch",
+      type: "process",
+      department: "Logistics",
+      description: "Optimizing last-mile delivery multi-stop routing factoring traffic.",
+      status: "baseline",
+      automation_potential: 0.75,
+      position: { x: 40, y: 320 },
+    },
+    {
+      id: "sc_r_planner",
+      label: "Demand Planner",
+      type: "role",
+      department: "Planning",
+      description: "Builds monthly baseline forecasts using legacy ERP spreadsheets.",
+      status: "augmented",
+      headcount: 35,
+      avg_salary: 65000.0,
+      position: { x: 350, y: 80 },
+    },
+    {
+      id: "sc_r_dispatcher",
+      label: "Route Dispatcher",
+      type: "role",
+      department: "Logistics",
+      description: "Manages driver schedules, traffic delays, and route adjustments.",
+      status: "at_risk",
+      headcount: 45,
+      avg_salary: 50000.0,
+      position: { x: 350, y: 320 },
+    },
+    {
+      id: "sc_r_ai_logistics_lead",
+      label: "AI Fleet Logistics Lead",
+      type: "role",
+      department: "Transformation",
+      description: "Configures dynamic autonomous fleet routing models.",
+      status: "new_opportunity",
+      headcount: 0,
+      avg_salary: 105000.0,
+      position: { x: 350, y: 540 },
+    },
+    {
+      id: "sc_s_dispatch",
+      label: "Manual Route Scheduling",
+      type: "skill",
+      department: "Logistics",
+      description: "Assigning stops manually via map sheets.",
+      status: "baseline",
+      complexity: "Low",
+      position: { x: 660, y: 200 },
+    },
+    {
+      id: "sc_s_ai_fleet_ops",
+      label: "Autonomous Fleet Optimization",
+      type: "skill",
+      department: "Transformation",
+      description: "Supervising algorithmic fleet routing and geofence triggers.",
+      status: "baseline",
+      complexity: "High",
+      position: { x: 660, y: 460 },
+    },
+    {
+      id: "sc_ai_route_agent",
+      label: "Autonomous Fleet Dispatch Agent",
+      type: "ai_agent",
+      department: "AI Systems",
+      description: "Real-time multi-agent routing optimizer reducing fleet fuel.",
+      status: "automated",
+      automation_potential: 0.85,
+      position: { x: 950, y: 260 },
+    },
+  ],
+  edges: [
+    { id: "sc_e1", source: "sc_r_dispatcher", target: "sc_p_route", relation: "EXECUTES", weight: 1.0 },
+    { id: "sc_e2", source: "sc_r_dispatcher", target: "sc_s_dispatch", relation: "REQUIRES_SKILL", weight: 0.9 },
+    { id: "sc_e3", source: "sc_ai_route_agent", target: "sc_p_route", relation: "AUTOMATES", weight: 0.85, is_impacted: true },
+    { id: "sc_e4", source: "sc_r_dispatcher", target: "sc_r_ai_logistics_lead", relation: "TRANSITIONS_TO", weight: 2.2 },
+    { id: "sc_e5", source: "sc_r_ai_logistics_lead", target: "sc_s_ai_fleet_ops", relation: "REQUIRES_SKILL", weight: 0.9 },
+  ],
+  total_headcount: 140,
+  baseline_annual_cost: 7700000.0,
+};
+
+// 4. Enterprise Software & Cloud Ops
+export const MOCK_SOFTWARE_CLOUD_GRAPH: GraphData = {
+  industry_id: "software_cloud",
+  industry_name: "Enterprise Software & Cloud Ops",
+  nodes: [
+    {
+      id: "dev_p_pr_review",
+      label: "Code Implementation & PR Review",
+      type: "process",
+      department: "Engineering",
+      description: "Writing application features and reviewing pull requests for architectural standards.",
+      status: "baseline",
+      automation_potential: 0.55,
+      position: { x: 40, y: 80 },
+    },
+    {
+      id: "dev_p_qa",
+      label: "Regression & End-to-End QA Testing",
+      type: "process",
+      department: "Quality Assurance",
+      description: "Designing manual and automated test cases, reporting defects, and regression checks.",
+      status: "baseline",
+      automation_potential: 0.75,
+      position: { x: 40, y: 320 },
+    },
+    {
+      id: "dev_r_qa_tester",
+      label: "Manual QA Engineer",
+      type: "role",
+      department: "Quality Assurance",
+      description: "Performs manual exploratory testing and manual defect logging.",
+      status: "at_risk",
+      headcount: 20,
+      avg_salary: 60000.0,
+      position: { x: 350, y: 140 },
+    },
+    {
+      id: "dev_r_ai_qa_lead",
+      label: "AI QA & Reliability Lead",
+      type: "role",
+      department: "Transformation",
+      description: "Architects autonomous LLM testing agents and synthetic test data generators.",
+      status: "new_opportunity",
+      headcount: 0,
+      avg_salary: 130000.0,
+      position: { x: 350, y: 480 },
+    },
+    {
+      id: "dev_s_manual_test",
+      label: "Manual Test Case Writing",
+      type: "skill",
+      department: "Quality Assurance",
+      description: "Writing step-by-step test plans in Excel or TestRail.",
+      status: "baseline",
+      complexity: "Low",
+      position: { x: 660, y: 140 },
+    },
+    {
+      id: "dev_s_agent_qa",
+      label: "Agentic AI Test Engineering",
+      type: "skill",
+      department: "Transformation",
+      description: "Building multi-agent automated testing suites with LLMs and self-healing test scripts.",
+      status: "baseline",
+      complexity: "High",
+      position: { x: 660, y: 420 },
+    },
+    {
+      id: "dev_ai_qa_agent",
+      label: "Autonomous QA & Test Agent",
+      type: "ai_agent",
+      department: "AI Systems",
+      description: "Parses PR diffs, writes boundary test cases, and executes self-healing regressions.",
+      status: "automated",
+      automation_potential: 0.80,
+      position: { x: 950, y: 240 },
+    },
+  ],
+  edges: [
+    { id: "dev_e1", source: "dev_r_qa_tester", target: "dev_p_qa", relation: "EXECUTES", weight: 1.0 },
+    { id: "dev_e2", source: "dev_r_qa_tester", target: "dev_s_manual_test", relation: "REQUIRES_SKILL", weight: 0.9 },
+    { id: "dev_e3", source: "dev_ai_qa_agent", target: "dev_p_qa", relation: "AUTOMATES", weight: 0.80, is_impacted: true },
+    { id: "dev_e4", source: "dev_r_qa_tester", target: "dev_r_ai_qa_lead", relation: "TRANSITIONS_TO", weight: 1.7 },
+    { id: "dev_e5", source: "dev_r_ai_qa_lead", target: "dev_s_agent_qa", relation: "REQUIRES_SKILL", weight: 0.95 },
+  ],
+  total_headcount: 80,
+  baseline_annual_cost: 9600000.0,
+};
+
+const INDUSTRY_GRAPHS: Record<string, GraphData> = {
+  banking_claims: MOCK_BANKING_GRAPH,
+  healthcare_clinical: MOCK_HEALTHCARE_GRAPH,
+  supply_chain: MOCK_SUPPLY_CHAIN_GRAPH,
+  software_cloud: MOCK_SOFTWARE_CLOUD_GRAPH,
+};
+
 export function getMockGraph(industryId: string): GraphData {
-  return MOCK_BANKING_GRAPH;
+  return INDUSTRY_GRAPHS[industryId] || MOCK_BANKING_GRAPH;
 }
 
 export function mockSimulation(industryId: string, adoptionRate: number): SimulationResult {
+  const baseGraph = getMockGraph(industryId);
   const adoption = Math.max(0, Math.min(1, adoptionRate));
-  const graph = JSON.parse(JSON.stringify(MOCK_BANKING_GRAPH)) as GraphData;
+  const graph = JSON.parse(JSON.stringify(baseGraph)) as GraphData;
 
-  const displaced_hc = Math.round(45 * adoption * 0.45);
-  const augmented_hc = Math.round(55 * adoption * 0.60);
-  const new_copilot = Math.max(1, Math.round(displaced_hc * 0.28));
-  const savings = Math.round((displaced_hc * 68000 * 0.85) + (augmented_hc * 68000 * 0.18));
+  const totalHc = baseGraph.total_headcount || 100;
+  const displaced_hc = Math.round(totalHc * 0.35 * adoption);
+  const augmented_hc = Math.round(totalHc * 0.55 * adoption);
+  const new_copilot = Math.max(1, Math.round(displaced_hc * 0.3));
+  const avgSal = (baseGraph.baseline_annual_cost / totalHc) || 75000;
+  const savings = Math.round((displaced_hc * avgSal * 0.85) + (augmented_hc * avgSal * 0.18));
   const hours_saved = Math.round((displaced_hc * 2080 * 0.80) + (augmented_hc * 2080 * 0.25));
   const auto_index = Math.round(adoption * 72.5);
-  const hitl_safety = Math.round(Math.max(72, 100 - (adoption * 24.5)));
+  const hitl_safety = Math.round(Math.max(70, 100 - (adoption * 24.5)));
 
   graph.nodes.forEach(n => {
-    if (n.type === 'process' && n.automation_potential * adoption >= 0.55) {
+    if (n.type === 'process' && n.automation_potential * adoption >= 0.50) {
       n.status = 'automated';
-    } else if (n.type === 'process' && n.automation_potential * adoption >= 0.25) {
+    } else if (n.type === 'process' && n.automation_potential * adoption >= 0.20) {
       n.status = 'augmented';
     }
-    if (n.id === 'r_processor') {
-      n.status = adoption > 0.4 ? 'at_risk' : 'baseline';
+    if (n.type === 'role' && n.status === 'at_risk') {
+      n.status = adoption > 0.3 ? 'at_risk' : 'baseline';
     }
-    if (n.id === 'r_ai_strategist') {
+    if (n.type === 'role' && n.status === 'new_opportunity') {
       n.headcount = new_copilot;
     }
   });
@@ -292,61 +599,63 @@ export function mockSimulation(industryId: string, adoptionRate: number): Simula
     new_ai_copilot_roles: new_copilot,
     human_in_loop_safety_score: hitl_safety,
     summary_insights: [
-      `At ${Math.round(adoption * 100)}% AI adoption, the organization captures approximately $${savings.toLocaleString()} in net operational value.`,
-      `${augmented_hc} knowledge workers are empowered with AI agents without headcount reduction.`,
-      `${displaced_hc} routine processing roles flagged for high-velocity reskilling into ${new_copilot} AI Strategist positions.`,
-      `Human-in-the-Loop safety score remains calibrated at ${hitl_safety}% for audit-ready compliance.`
+      `At ${Math.round(adoption * 100)}% AI adoption across ${baseGraph.industry_name}, organization captures ~$${savings.toLocaleString()} in net annual ROI.`,
+      `${augmented_hc} knowledge workers operate with autonomous AI agent co-pilots with 0 workforce friction.`,
+      `${displaced_hc} routine manual roles queued for fast-track algorithmic reskilling into ${new_copilot} AI Lead positions.`,
+      `Human-in-the-Loop safety score calibrated at ${hitl_safety}% for enterprise audit compliance.`
     ]
   };
 }
 
 export function mockReskilling(industryId: string, sourceRoleId: string, targetRoleId: string): ReskillPathway {
-  const source = MOCK_BANKING_GRAPH.nodes.find(n => n.id === sourceRoleId) || MOCK_BANKING_GRAPH.nodes[4];
-  const target = MOCK_BANKING_GRAPH.nodes.find(n => n.id === targetRoleId) || MOCK_BANKING_GRAPH.nodes[7];
+  const currentGraph = getMockGraph(industryId);
+  const roles = currentGraph.nodes.filter(n => n.type === 'role');
+  const source = roles.find(n => n.id === sourceRoleId) || roles[0] || MOCK_BANKING_GRAPH.nodes[4];
+  const target = roles.find(n => n.id === targetRoleId) || roles[roles.length - 1] || MOCK_BANKING_GRAPH.nodes[7];
 
   return {
     source_role: source,
     target_role: target,
-    shared_skills: ["Document Indexing & Policy Fundamentals"],
+    shared_skills: ["Core Operational Domain Knowledge", "Systems Navigation & Data Literacy"],
     delta_skills_to_acquire: [
-      "Prompt Engineering & Structured JSON Extraction",
-      "AI Governance & HITL Exception Auditing",
-      "Model Drift & Compliance Verification"
+      "Agentic AI Prompt Engineering & API Orchestration",
+      "Model Drift & Output Reliability Auditing",
+      "Human-in-the-Loop Exception Management"
     ],
-    transition_feasibility_score: 84.5,
-    total_estimated_weeks: 11,
-    estimated_reskilling_cost: 10450.0,
+    transition_feasibility_score: 87.5,
+    total_estimated_weeks: 10,
+    estimated_reskilling_cost: 9800.0,
     steps: [
       {
         step_number: 1,
         skill_id: "step_1",
-        skill_name: "Prompt Engineering & Structured JSON Extraction",
-        category: "AI & Technical Competency",
+        skill_name: "Agentic AI Prompt Engineering & API Orchestration",
+        category: "AI & Technical Systems",
         difficulty: "Moderate",
         estimated_weeks: 3,
-        learning_focus: "Hands-on lab modules, Pydantic schemas, and LLM structured prompt design."
+        learning_focus: "Hands-on labs on LLM prompt formulation, schema validation, and copilot orchestration."
       },
       {
         step_number: 2,
         skill_id: "step_2",
-        skill_name: "AI Governance & HITL Exception Auditing",
-        category: "Governance & Risk",
+        skill_name: "Model Drift & Output Reliability Auditing",
+        category: "Quality & Governance",
         difficulty: "Moderate",
-        estimated_weeks: 4,
-        learning_focus: "Auditing model confidence, regulatory compliance, and managing human-in-the-loop escalations."
+        estimated_weeks: 3,
+        learning_focus: "Evaluating automated outputs, spotting hallucinations, and tuning guardrails."
       },
       {
         step_number: 3,
         skill_id: "step_3",
-        skill_name: "Model Drift & Compliance Verification",
-        category: "Advanced Intelligence",
+        skill_name: "Human-in-the-Loop Exception Management",
+        category: "Strategic Transformation",
         difficulty: "Advanced",
         estimated_weeks: 4,
-        learning_focus: "Monitoring accuracy metrics, bias mitigation, and live transformation dashboard telemetry."
+        learning_focus: "Supervising automated multi-agent pipelines and resolving complex edge cases."
       }
     ],
-    career_growth_multiplier: "+121% Salary Upside & 5-Year Career Longevity",
-    rationale: `Transitioning from '${source.label}' to '${target.label}' builds on existing foundational domain knowledge while closing 3 high-leverage AI capability gaps over 11 weeks.`
+    career_growth_multiplier: "+115% Salary Growth & Long-Term Transformation Longevity",
+    rationale: `Direct shortest-path transition from '${source.label}' to '${target.label}' leveraging existing domain expertise while bridging AI competency gaps in 10 weeks.`
   };
 }
 
