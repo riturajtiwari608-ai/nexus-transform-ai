@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { 
   ReactFlow, 
   Controls, 
@@ -8,7 +8,9 @@ import {
   Edge,
   MarkerType,
   ConnectionLineType,
-  BackgroundVariant
+  BackgroundVariant,
+  useReactFlow,
+  ReactFlowProvider
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { GraphData, GraphNode } from '../types/graph';
@@ -19,7 +21,9 @@ interface GraphCanvasProps {
   onNodeClick: (node: GraphNode) => void;
 }
 
-export const GraphCanvas: React.FC<GraphCanvasProps> = ({ graphData, onNodeClick }) => {
+const GraphCanvasInner: React.FC<GraphCanvasProps> = ({ graphData, onNodeClick }) => {
+  const { fitView } = useReactFlow();
+
   // Convert GraphNode -> React Flow Node
   const nodes: Node[] = useMemo(() => {
     if (!graphData) return [];
@@ -81,6 +85,16 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ graphData, onNodeClick
     });
   }, [graphData]);
 
+  // Auto-center and fit view when nodes change or industry switches
+  useEffect(() => {
+    if (nodes.length > 0) {
+      const timer = setTimeout(() => {
+        fitView({ padding: 0.15, duration: 600 });
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [graphData?.industry_id, nodes.length, fitView]);
+
   return (
     <div className="w-full h-full relative bg-[#090d16]">
       <ReactFlow
@@ -89,9 +103,9 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ graphData, onNodeClick
         nodeTypes={nodeTypes}
         onNodeClick={(_, node) => onNodeClick(node.data as GraphNode)}
         fitView
-        fitViewOptions={{ padding: 0.15, duration: 800 }}
-        minZoom={0.2}
-        maxZoom={1.8}
+        fitViewOptions={{ padding: 0.15, duration: 600 }}
+        minZoom={0.1}
+        maxZoom={2.0}
         connectionLineType={ConnectionLineType.SmoothStep}
       >
         <Background 
@@ -117,3 +131,9 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ graphData, onNodeClick
     </div>
   );
 };
+
+export const GraphCanvas: React.FC<GraphCanvasProps> = (props) => (
+  <ReactFlowProvider>
+    <GraphCanvasInner {...props} />
+  </ReactFlowProvider>
+);
