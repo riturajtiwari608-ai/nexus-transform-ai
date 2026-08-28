@@ -3,7 +3,6 @@ import {
   ReactFlow, 
   Controls, 
   Background, 
-  MiniMap, 
   Node, 
   Edge,
   MarkerType,
@@ -115,18 +114,6 @@ const GraphCanvasInner: React.FC<GraphCanvasProps> = ({ graphData, onNodeClick }
           color="#1e293b" 
         />
         <Controls position="bottom-right" />
-        <MiniMap
-          position="bottom-left"
-          nodeColor={(n) => {
-            if (n.type === 'process') return '#38bdf8';
-            if (n.type === 'role') return '#10b981';
-            if (n.type === 'skill') return '#f59e0b';
-            if (n.type === 'ai_agent') return '#a855f7';
-            return '#64748b';
-          }}
-          nodeStrokeWidth={3}
-          maskColor="rgba(9, 13, 22, 0.75)"
-        />
       </ReactFlow>
     </div>
   );
