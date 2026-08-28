@@ -32,7 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const currentIndustry = industries.find(i => i.id === selectedIndustry) || industries[0];
 
   return (
-    <header className="h-12 border-b border-slate-800/90 bg-[#0c1220]/95 px-4 flex items-center justify-between z-30 sticky top-0 w-full overflow-hidden">
+    <header className="h-12 border-b border-slate-800/90 bg-[#0c1220]/98 px-4 flex items-center justify-between z-50 sticky top-0 w-full overflow-visible">
       {/* Left: Brand + Industry Dropdown with clean spacing */}
       <div className="flex items-center gap-3 shrink-0">
         {/* Brand */}
@@ -50,7 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Separator */}
         <div className="h-4 w-px bg-slate-800" />
 
-        {/* Industry Selector Dropdown */}
+        {/* Industry Selector Dropdown (Hover opens on top of everything) */}
         <div className="relative group">
           <div className="flex items-center gap-2 bg-slate-900/90 border border-slate-700/80 hover:border-indigo-500/60 rounded-lg px-2.5 py-1 cursor-pointer transition-all">
             <Layers className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
@@ -60,8 +60,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             <ChevronDown className="w-3 h-3 text-slate-400 group-hover:text-indigo-300 shrink-0" />
           </div>
 
-          {/* Dropdown Menu */}
-          <div className="absolute top-full left-0 mt-1.5 w-64 bg-[#0c1220]/98 border border-slate-700 rounded-xl shadow-2xl backdrop-blur-xl py-1 hidden group-hover:block z-50">
+          {/* Dropdown Menu - High Z-Index on top of metrics bar */}
+          <div className="absolute top-full left-0 mt-1.5 w-64 bg-[#0c1220] border border-slate-700 rounded-xl shadow-2xl backdrop-blur-xl py-1 hidden group-hover:block z-[100]">
             <div className="px-3 py-1 text-[9px] font-mono text-slate-400 uppercase tracking-wider border-b border-slate-800">
               Industry Packs
             </div>
